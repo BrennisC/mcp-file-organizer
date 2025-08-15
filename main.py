@@ -16,11 +16,11 @@ mcp = FastMCP()
 
 
 @mcp.tool("Ordenar Archivos por Formato")
-def ordenar_archivos(ruta_carpeta: str = None, crear_log: bool = True):
+def ordenar_archivos(ruta_carpeta: str = None):
     if not ruta_carpeta:
         ruta_carpeta = os.path.join(os.path.expanduser("~"), "Downloads")
 
-    logger.info(f"Iniciando organización de archivos en: {ruta_carpeta}")
+    logger.info(f"Iniciando organizacion de archivos en: {ruta_carpeta}")
 
     if not os.path.exists(ruta_carpeta):
         logger.error(f"La carpeta {ruta_carpeta} no existe")
@@ -206,28 +206,8 @@ def ordenar_archivos(ruta_carpeta: str = None, crear_log: bool = True):
             logger.error(f"Error al mover {archivo}: {str(e)}")
             print(f"Error al mover {archivo}: {str(e)}")
 
-    # Crear un reporte en la carpeta raíz
-    if crear_log:
-        fecha_hora = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        nombre_log = f"reporte_organizacion_{fecha_hora}.txt"
-        ruta_log = os.path.join(ruta_carpeta, nombre_log)
-
-        with open(ruta_log, "w", encoding="utf-8") as f:
-            f.write(f"Reporte de organización de archivos\n")
-            f.write(f"Fecha y hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-            f.write(f"Carpeta: {ruta_carpeta}\n\n")
-            f.write(f"Total de archivos encontrados: {total_archivos}\n")
-            f.write(f"Archivos organizados: {archivos_movidos}\n\n")
-            f.write("Resumen por categoría:\n")
-
-            for categoria, cantidad in resultados_por_categoria.items():
-                if cantidad > 0:
-                    f.write(f"  - {categoria}: {cantidad} archivos\n")
-
-        logger.info(f"Se ha creado un reporte en: {ruta_log}")
-
     logger.info(
-        f"Organización completada: {archivos_movidos} de {total_archivos} archivos organizados"
+        f"Organizacion completada: {archivos_movidos} de {total_archivos} archivos organizados"
     )
 
     return {

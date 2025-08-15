@@ -58,10 +58,6 @@ mcp tool "Analizar Carpeta"
 mcp tool "Analizar Carpeta" --ruta_carpeta="C:/ruta/a/tu/carpeta"
 ```
 
-## Configuración
-
-El programa guarda registros de actividad en un archivo `organizador_archivos.log` y también genera reportes de cada organización en la carpeta que se ha organizado.
-
 ## Personalización
 
 Si deseas modificar las categorías o extensiones reconocidas, puedes editar el diccionario `categorias` en el archivo `main.py`.
