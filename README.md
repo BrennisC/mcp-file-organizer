@@ -28,14 +28,14 @@ Esta herramienta analiza el contenido de una carpeta y proporciona estadísticas
 ## Requisitos
 
 - Python 3.12 o superior
-- Librería MCP (`pip install "mcp[cli]"`)
+- Librería MCP (`uv add "mcp[cli]"`)
 
 ## Uso
 
 ### Iniciar el servidor
 
 ```bash
-python main.py
+uv run mcp dev main.py
 ```
 
 Esto iniciará un servidor MCP en el puerto 3000.
